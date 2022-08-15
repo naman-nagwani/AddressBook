@@ -3,10 +3,28 @@ package com.bridgelabz;
 import java.util.Scanner;
 
 public class AddressBook {
+    private static int num=0;
     public static void main(String[] args) {
+        int n=0;
+        Scanner scan = new Scanner(System.in);
         System.out.println("Welcome to Address Book");
-        Contacts contact1 = new Contacts();
-        contact1.showDetails();
+        Contacts [] contacts = new Contacts[100];
+        while (n!=2) {
+            System.out.println("1. Add new contact");
+            System.out.println("2. Add Exit");
+            n = scan.nextInt();
+            switch (n){
+                case 1 :
+                    contacts[num] = new Contacts();
+                    contacts[num].showDetails();
+                    num++;
+                    break;
+                case 2 :
+                    break;
+                default:
+                    System.out.println("Invalid Input");
+            }
+        }
     }
 }
 
