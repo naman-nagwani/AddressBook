@@ -1,69 +1,102 @@
 package com.bridgelabz;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class AddressBook {
-    private static int num=0;
+    private static List<Contacts> contactList = new ArrayList<>();
+
     public static void main(String[] args) {
-        int n=0;
+        int choice=0;
         Scanner scan = new Scanner(System.in);
         System.out.println("Welcome to Address Book");
-        Contacts [] contacts = new Contacts[100];
-        while (n!=2) {
-            System.out.println("1. Add new contact");
-            System.out.println("2. Add Exit");
-            n = scan.nextInt();
-            switch (n){
+
+        while (choice!=4) {
+            System.out.println("1. Add new contact \n2. Edit Contact \n3. Print All Contacts \n4. Exit");
+            choice = scan.nextInt();
+            switch (choice){
                 case 1 :
-                    contacts[num] = new Contacts();
-                    contacts[num].showDetails();
-                    num++;
+                    contactList.add(new Contacts());
                     break;
                 case 2 :
+                    editContact();
+                    break;
+                case 3:
+                    printAllContacts();
+                    break;
+                case 4 :
+                    System.out.println("Exiting....");
                     break;
                 default:
                     System.out.println("Invalid Input");
             }
         }
     }
-}
 
-class Contacts {
-    public String firstName;
-    public String lastName;
-    public String address;
-    public String city;
-    public String state;
-    public String email;
-    public long phoneNo;
-
-    Contacts() {
-        Scanner scan = new Scanner(System.in);
-        System.out.println("Creating new contacts");
-        System.out.println("Enter the details of contact");
-        System.out.println("Enter First Name :");
-        this.firstName = scan.nextLine();
-        System.out.println("Enter Last Name :");
-        this.lastName = scan.nextLine();
-        System.out.println("Enter Address :");
-        this.address = scan.nextLine();
-        System.out.println("Enter city :");
-        this.city = scan.nextLine();
-        System.out.println("Enter state :");
-        this.state = scan.nextLine();
-        System.out.println("Enter e-mail :");
-        this.email = scan.nextLine();
-        System.out.println("Enter phone number :");
-        this.phoneNo = scan.nextLong();
+    private static void printAllContacts() {
+        for (int i =0;i<contactList.size();i++) {
+            System.out.println(contactList.get(i));
+        }
     }
 
-    public void showDetails() {
-        System.out.println("First Name : "+ this.firstName);
-        System.out.println("Last Name : "+ this.lastName);
-        System.out.println("Address : "+ this.address);
-        System.out.println("City : "+ this.city);
-        System.out.println("State : "+ this.state);
-        System.out.println("E-mail : "+ this.email);
-        System.out.println("Phone Number : "+ this.phoneNo);
+    private static void editContact() {
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Enter name of contact to Edit");
+        String name = scan.nextLine();
+        for(Contacts contacts :contactList) {
+            if(contacts.firstName.equals(name)) {
+                System.out.println(contacts);
+                System.out.println("Enter what you want to edit \n1.First Name \n2.Last Name"
+                        + " \n3.Address \n4.City \n5.State \n6.E-mail \n7.Phone Number");
+                int choice = scan.nextInt();
+                scan.nextLine();
+
+                switch (choice) {
+                    case 1:
+                        System.out.println("Enter the new First Name");
+                        String newFirstName = scan.nextLine();
+                        contacts.firstName = newFirstName;
+                        break;
+
+                    case 2:
+                        System.out.println("Enter the new Last Name");
+                        String newLastName = scan.nextLine();
+                        contacts.lastName = newLastName;
+                        break;
+
+                    case 3:
+                        System.out.println("Enter the new Address");
+                        String newAddress = scan.nextLine();
+                        contacts.address = newAddress;
+                        break;
+
+                    case 4:
+                        System.out.println("Enter the new City");
+                        String newCity = scan.nextLine();
+                        contacts.city = newCity;
+                        break;
+
+                    case 5:
+                        System.out.println("Enter the new State");
+                        String newState = scan.nextLine();
+                        contacts.state = newState;
+                        break;
+                    case 6:
+                        System.out.println("Enter the new E-mail");
+                        String newEmail = scan.nextLine();
+                        contacts.email = newEmail;
+                        break;
+
+                    case 7:
+                        System.out.println("Enter the new Phone Number");
+                        String newPhoneNo = scan.nextLine();
+                        contacts.phoneNo = newPhoneNo;
+                        break;
+                    default:
+                        System.out.println("Invalid Input");
+                }
+            }
+        }
     }
 }
