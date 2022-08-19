@@ -12,8 +12,8 @@ public class AddressBook {
         Scanner scan = new Scanner(System.in);
         System.out.println("Welcome to Address Book");
 
-        while (choice!=4) {
-            System.out.println("1. Add new contact \n2. Edit Contact \n3. Print All Contacts \n4. Exit");
+        while (choice!=5) {
+            System.out.println("1. Add new contact \n2. Edit Contact \n3. Print All Contacts \n4. Delete a Contact \n5. Exit");
             choice = scan.nextInt();
             switch (choice){
                 case 1 :
@@ -25,11 +25,26 @@ public class AddressBook {
                 case 3:
                     printAllContacts();
                     break;
-                case 4 :
+                case 4:
+                    deleteContact();
+                    break;
+                case 5 :
                     System.out.println("Exiting....");
                     break;
                 default:
                     System.out.println("Invalid Input");
+            }
+        }
+    }
+
+    private static void deleteContact() {
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Enter the first name of contact to be deleted :");
+        String name = scan.nextLine();
+        for (Contacts contact : contactList) {
+            if (contact.firstName.equals(name)){
+                contactList.remove(contact);
+                System.out.println("Contact deleted");
             }
         }
     }
