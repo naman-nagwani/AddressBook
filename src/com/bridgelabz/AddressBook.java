@@ -7,37 +7,7 @@ import java.util.Scanner;
 public class AddressBook {
     private static List<Contacts> contactList = new ArrayList<>();
 
-    public static void main(String[] args) {
-        int choice=0;
-        Scanner scan = new Scanner(System.in);
-        System.out.println("Welcome to Address Book");
-
-        while (choice!=5) {
-            System.out.println("1. Add new contact \n2. Edit Contact \n3. Print All Contacts \n4. Delete a Contact \n5. Exit");
-            choice = scan.nextInt();
-            switch (choice){
-                case 1 :
-                    contactList.add(new Contacts());
-                    break;
-                case 2 :
-                    editContact();
-                    break;
-                case 3:
-                    printAllContacts();
-                    break;
-                case 4:
-                    deleteContact();
-                    break;
-                case 5 :
-                    System.out.println("Exiting....");
-                    break;
-                default:
-                    System.out.println("Invalid Input");
-            }
-        }
-    }
-
-    private static void deleteContact() {
+    public void deleteContact() {
         Scanner scan = new Scanner(System.in);
         System.out.println("Enter the first name of contact to be deleted :");
         String name = scan.nextLine();
@@ -49,13 +19,13 @@ public class AddressBook {
         }
     }
 
-    private static void printAllContacts() {
+    public void printAllContacts() {
         for (int i =0;i<contactList.size();i++) {
             System.out.println(contactList.get(i));
         }
     }
 
-    private static void editContact() {
+    public void editContact() {
         Scanner scan = new Scanner(System.in);
         System.out.println("Enter name of contact to Edit");
         String name = scan.nextLine();
@@ -113,5 +83,9 @@ public class AddressBook {
                 }
             }
         }
+    }
+
+    public void addNewContact() {
+        contactList.add(new Contacts());
     }
 }
