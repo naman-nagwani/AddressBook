@@ -16,9 +16,9 @@ public class AddressBookMain {
         int n = 0;
         Scanner scan = new Scanner(System.in);
 
-        while (n != 5) {
+        while (n != 6) {
             System.out.println("1.Create new Address book \n2.Remove Address book"
-                    + "\n3.Print all Address book \n4. Select Address book \n5. Exit");
+                    + "\n3.Print all Address book \n4. Select Address book \n5. Search \n6. Exit");
             n = scan.nextInt();
             switch (n) {
                 case 1:
@@ -34,6 +34,9 @@ public class AddressBookMain {
                     selectAddressBook();
                     break;
                 case 5:
+                    search();
+                    break;
+                case 6:
                     System.out.println("Exiting....");
                     break;
                 default:
@@ -41,6 +44,15 @@ public class AddressBookMain {
             }
         }
 
+    }
+
+    private static void search() {
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Enter the Name of State or City");
+        String searchData = scan.nextLine();
+        for (AddressBook addressBook : addressBookList) {
+            addressBook.contactList.stream().filter(contacts -> contacts.state.equals(searchData)||contacts.city.equals(searchData)).forEach(contacts -> System.out.println(contacts));
+        }
     }
 
     private static void selectAddressBook() {

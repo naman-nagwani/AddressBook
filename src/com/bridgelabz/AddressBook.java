@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class AddressBook {
-    private static List<Contacts> contactList = new ArrayList<>();
+    public List<Contacts> contactList = new ArrayList<>();
 
     public void deleteContact() {
         Scanner scan = new Scanner(System.in);
