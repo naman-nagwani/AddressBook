@@ -12,23 +12,17 @@ public class Contacts {
     public String phoneNo;
 
     Contacts() {
-        Scanner scan = new Scanner(System.in);
-        System.out.println("Creating new contacts");
-        System.out.println("Enter the details of contact");
-        System.out.println("Enter First Name :");
-        this.firstName = scan.nextLine();
-        System.out.println("Enter Last Name :");
-        this.lastName = scan.nextLine();
-        System.out.println("Enter Address :");
-        this.address = scan.nextLine();
-        System.out.println("Enter city :");
-        this.city = scan.nextLine();
-        System.out.println("Enter state :");
-        this.state = scan.nextLine();
-        System.out.println("Enter e-mail :");
-        this.email = scan.nextLine();
-        System.out.println("Enter phone number :");
-        this.phoneNo = scan.nextLine();
+
+    }
+
+    public Contacts(String firstName, String lastName, String address, String city, String state, String email, String phoneNo) {
+
+        this.firstName=firstName;
+        this.lastName=lastName;
+        this.address=address;
+        this.city=city;
+        this.state=state;
+        this.email=email;
     }
 
     @Override
