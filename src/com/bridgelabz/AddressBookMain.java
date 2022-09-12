@@ -112,9 +112,9 @@ public class AddressBookMain {
             if (m.getKey().equals(name)) {
                 addressBook = m.getValue();
                 int option = 0;
-                while (option != 6) {
+                while (option != 7) {
                     System.out.println("1.Add Contact \n2.Remove Contact"
-                            + " \n3.Edit Contact \n4.Print all Contact \n5.Print contacts in sorted order \n6.Back to main menu");
+                            + " \n3.Edit Contact \n4.Print all Contact \n5.Print contacts in sorted by Name \n6.Print contacts in sorted by options  \n7.Back to main menu");
                     option = scan.nextInt();
                     switch (option) {
                         case 1:
@@ -133,6 +133,9 @@ public class AddressBookMain {
                             addressBook.printSorted();
                             break;
                         case 6:
+                            addressBook.printSortedByOptions();
+                            break;
+                        case 7:
                             System.out.println("Back to main menu");
                             break;
                         default:

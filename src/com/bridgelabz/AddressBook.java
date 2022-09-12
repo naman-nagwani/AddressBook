@@ -1,6 +1,7 @@
 package com.bridgelabz;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
 
@@ -124,5 +125,30 @@ public class AddressBook {
 
     public void printSorted() {
         contactList.stream().sorted((contact1,contact2) -> contact1.firstName.compareTo(contact2.lastName)).forEach(contact -> System.out.println(contact));
+    }
+
+    public void printSortedByOptions() {
+        int option = 0;
+        Scanner scan = new Scanner(System.in);
+        while (option != 7) {
+            System.out.println("Sort by");
+            System.out.println("1.City \n2.State"
+                    + " \n3.Exit");
+            option = scan.nextInt();
+            switch (option) {
+                case 1:
+                    contactList.stream().sorted(Comparator.comparing(contact -> contact.city)).forEach(contact -> System.out.println(contact));
+                    break;
+                case 2:
+                    contactList.stream().sorted(Comparator.comparing(contact -> contact.state)).forEach(contact -> System.out.println(contact));
+                    break;
+                case 3:
+                    System.out.println("Exiting");
+                    break;
+                default:
+                    System.out.println("Invalid Selection ");
+            }
+        }
+
     }
 }
