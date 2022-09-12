@@ -1,0 +1,8 @@
+Contacts{
+firstName='Naman'
+lastName='Nagwani'
+address='fjn'
+city='sdjn'
+state='ksdm'
+email='cdjn'
+phoneNo='null'}
