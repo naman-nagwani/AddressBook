@@ -20,7 +20,7 @@ public class AddressBookMain {
         int n = 0;
         Scanner scan = new Scanner(System.in);
 
-        while (n != 8) {
+        while (n != 9) {
             System.out.println("1.Create new Address book \n2.Remove Address book"
                     + "\n3.Print all Address book \n4. Select Address book \n5. Search \n6. Display by City \n7. Display by State \n8.Count \n9. Exit");
             n = scan.nextInt();
@@ -60,7 +60,8 @@ public class AddressBookMain {
     }
 
     private static void count() {
-
+        System.out.println("count by city : "+cityMap.size());
+        System.out.println("count by state : "+stateMap.size());
     }
 
     private static void displayByState() {
