@@ -114,8 +114,9 @@ public class AddressBookMain {
                 int option = 0;
                 while (option != 8) {
                     System.out.println("1.Add Contact \n2.Remove Contact"
-                            + " \n3.Edit Contact \n4.Print all Contact \n5.Print contacts in sorted by Name \n6.Print contacts in sorted by options \n7.Print to File  \n8.Back to main menu");
+                            + " \n3.Edit Contact \n4.Print all Contact \n5.Print contacts in sorted by Name \n6.Print contacts in sorted by options \n7.Print to File \n8.Print to CSV file \n8.Back to main menu");
                     option = scan.nextInt();
+                    FileHandler fileHandler = new FileHandler();
                     switch (option) {
                         case 1:
                             addressBook.addNewContact();
@@ -136,10 +137,12 @@ public class AddressBookMain {
                             addressBook.printSortedByOptions();
                             break;
                         case 7:
-                            FileHandler fileHandler = new FileHandler();
                             fileHandler.writeIntoFile(name,addressBook);
                             break;
                         case 8:
+                            fileHandler.writeIntoCSV(name,addressBook);
+                            break;
+                        case 9:
                             System.out.println("Back to main menu");
                             break;
                         default:
